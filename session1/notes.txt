@@ -1,0 +1,14 @@
+
+-- Review Js
+-- Advanced Js
+-- Node js 
+-- Express js
+-- Mongo
+-- Typescript
+-- Angular
+
+
+/////////////////////////////////////
+
+Bom ==> Browser Object Model (window)
+Dom ==> document Object Model (document)
