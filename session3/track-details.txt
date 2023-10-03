@@ -1,0 +1,11 @@
+js revision 
+js advanced => fetch, async, promises, clouses, callback, await, then , catch, exception, oop
+nodeJs => terminal, express js, apis, authorization 
+mongodb => no sql 
+web based => hbs, apis
+postman
+typescript
+angular 16
+
+tasks => github => task 1, .....
+final project
