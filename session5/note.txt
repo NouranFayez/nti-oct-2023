@@ -1,0 +1,12 @@
+=> users  { id: unique(date.now),  name, age, email }
+
+store user => push inside array in json file
+show all users => get all data from json file
+show single user => find
+update a user by ID => find replace
+delete => slice
+
+
+json => [
+    {},{},...., {}
+]
