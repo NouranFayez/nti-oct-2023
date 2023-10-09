@@ -2,10 +2,11 @@ const handleJson = require("./fileHandle.js")
 const validator = require("validator")
 const chalk = require("chalk")
 class User{
-    static add(name, age, email){
+    static add(data){
+        const {name, email, age, status} = data
         try{
             if( !validator.isEmail(email) ) throw new Error("invalid email format")
-            const user = { id: Date.now(), name,age, email }
+            const user = { id: Date.now(), name,age, email, status }
             const allUsers = handleJson.readFromJSON()
 
             const userIndex = allUsers.findIndex(u=> u.name == name)
@@ -25,7 +26,7 @@ class User{
         if(allUser.length == 0) 
             return console.log(chalk.red("no users yet"))
         allUser.forEach(user => {
-            console.log(chalk.green(`${user.id} - ${user.name} - ${user.age} - ${user.email}`))            
+            console.log(chalk.green(`${user.id} - ${user.name} - ${user.age} - ${user.email} - ${user.status}`))            
         });
     }
     static single(id){
@@ -35,6 +36,9 @@ class User{
         else console.log(chalk.green(index.name))
     }
     static edit(){
+        //get item index
+        // object new  replace instead old
+        
         console.log("edit")
     }
     static delete(){
