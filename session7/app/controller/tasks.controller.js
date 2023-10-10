@@ -1,12 +1,34 @@
+const deal = require("../helper/dealWithJson.helper")
 class Task{
     static add = (req,res) => {
         res.render("add", {
             pageTitle: "Add Task"
         })
     }
+    static addLogic = (req,res)=>{
+        const taskData = {id:Date.now(), status:false, ...req.query}
+        const allTasks = deal.readFromJson()
+        allTasks.push(taskData)  //concat
+        deal.writeToJson(allTasks)
+        res.redirect("/")
+    }
+    static addPost = (req,res) => {
+        res.render("addPost", {
+            pageTitle: "Add Task"
+        })
+    }
+    static addPostLogic = (req,res)=>{
+        const taskData = {id:Date.now(), status:false, ...req.body}
+        const allTasks = deal.readFromJson()
+        allTasks.push(taskData)  //concat
+        deal.writeToJson(allTasks)
+        res.redirect("/")
+    }
     static showAll = (req,res) => {
+        const allUsers = deal.readFromJson()
         res.render("all", {
-            pageTitle: "All Tasks"
+            pageTitle: "All Tasks",
+            users : allUsers
         })
     }
     static showSingle = (req,res) => {

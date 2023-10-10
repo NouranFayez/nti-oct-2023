@@ -9,14 +9,18 @@
         </tr>
     </thead>
     <tbody>
-        <td>1</td>
-        <td>title</td>
-        <td>
-            <a href="/single" class="btn btn-sucess mx-2">Show</a>
-            <a class="btn btn-primary mx-2" href="/activate">Activate task</a>
-            <a href="/edit" class="btn btn-warning mx-2">Edit</a>
-            <a href="/del" class="btn btn-danger mx-2">Delete</a>
-        </td>
+        {{#each users}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>
+                <a href="/single" class="btn btn-sucess mx-2">Show</a>
+                <a class="btn btn-primary mx-2" href="/activate">Activate task</a>
+                <a href="/edit" class="btn btn-warning mx-2">Edit</a>
+                <a href="/del" class="btn btn-danger mx-2">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
     </tbody>
 </table>
 {{>footer}}
