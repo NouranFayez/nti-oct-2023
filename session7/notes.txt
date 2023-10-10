@@ -1,0 +1,17 @@
+tasks app => (title, content, id, status)
+- all tasks
+- add tasks
+- edit task
+- remove task 
+- single task
+- activate task
+
+
+- json file
+
+- class deal with json files => read, write fron/to files
+- class deal with tasks => get all, add, edit, delete, activate, get single
+
+- hbs files -> add, edit, all, single
+
+- routes => add, edit, activate, delete, all, single
