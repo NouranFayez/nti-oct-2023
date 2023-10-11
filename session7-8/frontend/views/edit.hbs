@@ -1,0 +1,22 @@
+{{>header}}
+{{>navbar}}
+<form method="post">
+    <div class="mb-3">
+        <input name="id" class="form-control" disabled placeholder="title" value="{{task.id}}">
+    </div>
+    <div class="mb-3">
+        <input name="title" class="form-control" placeholder="title" value="{{task.title}}">
+    </div>
+    <div class="mb-3">
+        <input name="content" class="form-control" placeholder="content" value="{{task.content}}">
+    </div>
+    <div class="mb-3">
+        <label>status</label>
+        <input type="checkbox" {{#if task.status}}checked{{/if}} name="status">
+    </div>
+    
+    <div class="mb-3">
+        <button class="btn btn-primary">Add Task</button>
+    </div>
+</form>
+{{>footer}}

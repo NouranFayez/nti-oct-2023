@@ -17,4 +17,11 @@ app.use(express.urlencoded({ extended :true }))
 const taskRoutes = require("./routes/tasks.routes")
 app.use(taskRoutes)
 
+app.all("*", (req,res)=>{
+    res.render("err404", {
+        pageTitle:"page not found",
+        message : "request for invalid url"
+    })
+})
+
 module.exports = app
