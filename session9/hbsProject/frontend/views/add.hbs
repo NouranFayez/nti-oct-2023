@@ -1,0 +1,44 @@
+{{>header}}
+{{>navbar}}
+<form method="get" action="/addLogic">
+    <div class="mb-3">
+        <input name="title" class="form-control" placeholder="title" value="{{task.title}}">
+        {{#if myErrors.title}}
+        <div class="alert alert-danger my-2">
+            {{myErrors.title}}
+        </div>
+        {{/if}}
+    </div>
+    <div class="mb-3">
+        <input name="content" class="form-control" placeholder="content" value="{{task.content}}">
+    <div class="alert alert-danger my-2">
+            {{myErrors.content}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <input name="userEmail" class="form-control" placeholder="email" value="{{task.userEmail}}">
+    <div class="alert alert-danger my-2">
+            {{myErrors.userEmail}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <input name="userAge" class="form-control" placeholder="age" value="{{task.userAge}}">
+    <div class="alert alert-danger my-2">
+            {{myErrors.userAge}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <select class="form-select" name="gender">
+            <option {{#unless task.gender}}selected{{/unless}} disabled>Gender</option>
+            <option value="male" {{#if gender}}selected{{/if}}>male</option>
+            <option value="female"{{#unless gender}}selected{{/unless}}>female</option>
+        </select>
+    <div class="alert alert-danger my-2">
+            {{myErrors.gender}}
+        </div>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary">Add Task</button>
+    </div>
+</form>
+{{>footer}}

@@ -1,0 +1,22 @@
+{{>header}}
+{{>navbar}}
+    <div class="row">
+        {{#if task}}
+        <div class="col-6">id: {{task.id}}</div>        
+        <div class="col-6">title: {{task.title}}</div>        
+        <div class="col-6">content: {{task.content}}</div>        
+        <div class="col-6">status: {{task.status}}</div>  
+        <div>
+                {{#unless status}}
+                <a href="/activate/{{task.id}}" class="btn btn-primary mx-2">Activate task</a>
+                {{/unless}}
+                <a href="/del/{{task.id}}" class="btn btn-danger mx-2">Delete</a>
+
+                <a href="/edit/{{task.id}}" class="btn btn-warning mx-2">Edit</a>
+
+        </div>
+        {{else}}
+        <div class="alert alert-danger">No user with this id</div>
+        {{/if}}      
+    </div>
+{{>footer}}

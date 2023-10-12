@@ -1,0 +1,28 @@
+{{>header}}
+{{>navbar}}
+<h3>Post</h3>
+<form method="post" action="/addLogicPost">
+    <div class="mb-3">
+        <input name="title" class="form-control" placeholder="title">
+    </div>
+    <div class="mb-3">
+        <input name="content" class="form-control" placeholder="content">
+    </div>
+        <div class="mb-3">
+        <input name="userEmail" class="form-control" placeholder="email">
+    </div>
+    <div class="mb-3">
+        <input name="userAge" class="form-control" placeholder="age">
+    </div>
+    <div class="mb-3">
+        <select class="form-select" name="gender">
+            <option selected disabled>Gender</option>
+            <option value="male">male</option>
+            <option value="female">female</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <button class="btn btn-primary">Add Task</button>
+    </div>
+</form>
+{{>footer}}

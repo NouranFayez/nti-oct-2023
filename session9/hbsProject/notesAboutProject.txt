@@ -1,0 +1,11 @@
+back(apis, mongoose package) , front (angular)
+
+- group max 3 
+- ecommerce, social engine, elearning, directories, crm, hrm, erp
+* Enterprise resource planning (ERP) 
+* Humen resource mangement (hrm)
+* Customer Relationship Management (CRM)
+
+- ecommerce => admin, user (types, urls for each type - website , dashboard)
+- admin => add product, edit, dele, show, show single, show users 
+- user=> show all products , show single , add to cart
