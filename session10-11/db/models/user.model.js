@@ -60,6 +60,10 @@ const userSchema = mongoose.Schema({
     },
     addresses:[
         {
+            isDefault: {
+                type:Boolean,
+                default: false
+            },
             addrType:{
                 type:String,
                 trim:true,

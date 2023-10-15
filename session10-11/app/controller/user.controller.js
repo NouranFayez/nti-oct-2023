@@ -72,5 +72,65 @@ class User{
             resGenerator(res,500, false, e.message, "Invalid Login")
         }
     }
+    static profile = async(req,res)=>{
+        resGenerator(res,200, true, {user: req.user}, "profile fetched")
+    }
+    static logOut = async(req,res)=>{
+        try{    
+            req.user.tokens = req.user.tokens.filter(t=>{
+                return t.token != req.token
+            })
+            await req.user.save()
+            resGenerator(res,200, true, null, "Logged out")
+        }
+        catch(e){
+            resGenerator(res,500, false, e.message, "Invalid Logout")
+        }
+    }
+    static logOutAll = async(req,res)=>{
+        try{    
+            req.user.tokens = []
+            await req.user.save()
+            resGenerator(res,200, true, null, "Logged out from all devices")
+        }
+        catch(e){
+            resGenerator(res,500, false, e.message, "Invalid Logout")
+        }
+    }
+    static addAddr = async(req,res)=>{
+        try{    
+            req.user.addresses.forEach(ad => ad.isDefault=false)
+            req.body.isDefault=true
+            req.user.addresses.push(req.body)
+            await req.user.save()
+            resGenerator(res,200, true, {addresses: req.user.addresses}, "address added")
+        }
+        catch(e){
+            resGenerator(res,500, false, e.message, "fail")
+        }
+    }
+    static delAddr = async(req,res)=>{
+        try{   
+            const addrIndex = req.user.addresses.findIndex(
+                ad => ad._id == req.params.id
+            ) 
+            if(addrIndex == -1) throw new Error("invalid address")
+            const current = req.user.addresses[addrIndex].isDefault
+            req.user.addresses.splice(addrIndex, 1);
+            if(current && req.user.addresses.length>0)  
+                req.user.addresses[0].isDefault = true
+            await req.user.save()
+            resGenerator(
+                res, 200, true, {
+                addresses: req.user.addresses
+                }, 
+                "address deletd"
+            )
+        }
+        catch(e){
+            resGenerator(res,500, false, e.message, "fail")
+        }
+    }
+
 }
 module.exports = User

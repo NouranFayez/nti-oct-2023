@@ -13,4 +13,12 @@ router.delete("/:id", userController.delSingle)
 router.put("/:id", userController.editSingle)
 
 router.post("/login", userController.login)
+
+router.get("/profile", auth, userController.profile)
+
+router.post("/logout",auth, userController.logOut)
+router.post("/logoutAll",auth, userController.logOutAll)
+
+router.post("/addAddress", auth, userController.addAddr)
+router.delete("/addr/:id", auth, userController.delAddr)
 module.exports = router
