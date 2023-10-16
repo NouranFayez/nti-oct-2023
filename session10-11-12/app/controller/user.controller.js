@@ -41,8 +41,8 @@ class User{
     }
     static delSingle = async(req,res)=>{        
         try{
-            await userModel.findByIdAndDelete(req.params.id)
-            resGenerator(res,200, true, null , "registered")
+            const user = await userModel.findOneAndDelete({_id:req.params.id})
+            resGenerator(res,200, true, user , "registered")
         }
         catch(e){
             resGenerator(res,500, false, e.message, "Invalid register")

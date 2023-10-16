@@ -2,6 +2,7 @@ const mongoose = require("mongoose")
 const validator = require("validator")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
+const taskModel = require("./task.model")
 
 const userSchema = mongoose.Schema({
     fname:{
@@ -87,12 +88,19 @@ const userSchema = mongoose.Schema({
 }, {
     timestamps: true
 })
-
+userSchema.virtual("myTasks", {
+    ref:"Task",
+    localField: "_id",
+    foreignField:"userId"
+})
 userSchema.pre("save", async function(){
     if(this.isModified("password"))
         this.password = await bcrypt.hash(this.password, 12)
 })
-
+userSchema.post("findOneAndDelete", async function(_doc){
+    // console.log(doc)
+    await taskModel.deleteMany({userId: _doc._id})
+})
 userSchema.methods.toJSON = function(){
     const user = this.toObject()
     delete user.password

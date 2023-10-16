@@ -4,7 +4,7 @@ const userModel = require("../../db/models/user.model")
 const auth = async(req, res, next) =>{
     try{
         // get token from header
-        const token = req.header("Authorization").replace("bearer ", "")
+        const token = req.header("Authorization").replace("Bearer ", "")
         // verify token
         const decoded = verify(token, process.env.jwtKey)
         //if ! user => throw error enta msh auth

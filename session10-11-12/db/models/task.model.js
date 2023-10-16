@@ -28,9 +28,13 @@ const taskSchema = mongoose.Schema({
         trim:true,
         required: function(){ return this.type =="file"}
     }, 
-    // userId:{}
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref:"User"
+    }
 },{
     timestamps:true
 })
-const taskModel = mongoose.model ("Task",taskSchema)
-module.expots = taskModel
+const taskModel = mongoose.model("Task",taskSchema)
+module.exports = taskModel
