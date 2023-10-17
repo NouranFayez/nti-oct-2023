@@ -16,3 +16,33 @@ users
 
 tasks 
 type(txt, withFile), title, content, file, userId
+
+
+
+
+roles => table => modules - permission
+tasks     create    1
+tasks     show all  2
+tasks     single    3
+
+roles => admin   permissions : ["/showtasks","/tasks", "/addAdmin"]
+
+user => roleId +> admin
+
+=> middleware => auth
+    user, token, hasPermission
+
+generalClass => mainMethods 
+
+userController => inhert generalClass
+
+
+
+
+modules => add   module name    route    1
+
+roles => role id, permission [
+    m1, m2, m3
+], title
+
+user => role

@@ -32,7 +32,14 @@ const taskSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref:"User"
-    }
+    },
+    files:[
+        {
+            file:{
+                type:String
+            }
+        }
+    ]
 },{
     timestamps:true
 })

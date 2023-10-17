@@ -3,6 +3,7 @@ const {resGenerator} = require("../helper")
 const userModel = require("../../db/models/user.model")
 const auth = async(req, res, next) =>{
     try{
+        // console.log(req.originalUrl)
         // get token from header
         const token = req.header("Authorization").replace("Bearer ", "")
         // verify token
@@ -21,4 +22,15 @@ const auth = async(req, res, next) =>{
         resGenerator(res,500, false, e.message, "un auth")
     }
 }
-module.exports = auth
+const isAdmin = async(req,res, next) =>{
+    try{
+        if(req.user.userType!="admin") throw new Error("admins only")
+        next()
+    }
+    catch(e){
+        resGenerator(res,500, false, e.message, "un auth")
+    }
+}
+module.exports = {auth, isAdmin}
+
+// vps - shared

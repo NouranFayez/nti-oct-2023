@@ -1,8 +1,20 @@
-const {resGenerator} = require("../helper")
+const {resGenerator, fileHandler} = require("../helper")
 const userModel = require("../../db/models/user.model")
 class User{
     static register = async(req,res)=>{
         try{
+            req.body.userType="user"
+            const user = new userModel(req.body)
+            await user.save()
+            resGenerator(res,200, true, user, "registered")
+        }
+        catch(e){
+            resGenerator(res,500, false, e.message, "Invalid register")
+        }
+    }
+    static registerAsAdmin = async(req,res)=>{
+        try{
+            req.body.userType="admin"
             const user = new userModel(req.body)
             await user.save()
             resGenerator(res,200, true, user, "registered")
@@ -131,6 +143,19 @@ class User{
             resGenerator(res,500, false, e.message, "fail")
         }
     }
-
+    static updateProfileImage = async(req,res) =>{
+        try{
+        // const f = fileHandler(req)
+        req.user.image = `http://localhost:3000/`+req.file.filename
+        await req.user.save()
+        resGenerator(   
+            res, 200, true, 
+            req.user,
+            "image updated"
+        )
+    }
+    catch(e){
+        resGenerator(res,500, false, e.message, "fail")
+    }}
 }
 module.exports = User

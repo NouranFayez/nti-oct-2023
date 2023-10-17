@@ -42,6 +42,10 @@ class Task{
             resGenerator(res,500, false, e.message, "Invalid register")
         }
     }
-    
+    static addNewFiles = async(req,res)=>{
+        res.send({
+            data:req.files
+        })
+    }
 }
 module.exports = Task
