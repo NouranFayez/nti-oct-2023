@@ -1,0 +1,23 @@
+-- npm install -g @angular/cli ==> install angular cli (command line interface)
+-- ng new appName ==> create anglar application
+-- ng generate component folderName/componentName ==> ng g c folderName/ComponentName
+
+==> index page ==> navbar ==> shared  
+                   slider ==> components
+                   services ==> components
+                   about ==> components
+                   footer ==> shared
+
+
+-- ng serve -o / ng serve -open   
+
+-- Data Binding ==> one way binding ==> interpolation {{}}
+                                        property binding []
+                                        event binding ()
+                
+                ==> two way binding ==> [] + () ==> [(ngModel)]
+
+-- directive ==> structure directive  ==> *ngFor , *ngIf , *ngswitch
+                 attributes directive  ==> ngClass , ngStyle , ngModel              
+
+-- template Referance                                        

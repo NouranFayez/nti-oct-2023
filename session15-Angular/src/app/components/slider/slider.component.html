@@ -1,0 +1,18 @@
+<form>
+    <input type="text" class="form-control">
+    <!-- (input)="handleInput($event)" -->
+
+    <input #nameInput type="text" class="form-control my-3 "
+     (keyup.control.enter)="handleInputValue(nameInput)"
+      placeholder="first Name">
+     <!-- (input)="handleInputValue(nameInput)" -->
+    <button type="button" class="btn btn-primary" 
+    (click)="handleClick(nameInput)">Get Input Data</button>
+
+    <input type="text" class="form-control w-50 my-4" 
+    placeholder="enter your name" [(ngModel)]="model" name="model" >
+
+    <h4 class="text-danger">{{model}}</h4>
+
+    {{inputValue}}
+</form>
