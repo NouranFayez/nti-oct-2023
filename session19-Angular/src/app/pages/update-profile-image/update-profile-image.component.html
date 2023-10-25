@@ -1,0 +1,14 @@
+<form class="row gy-3 mt-3">
+    <div class="col-12">
+        <input type="file" class="form-control"
+         (change)="handleChange($event)">
+    </div>
+    <div class="col-12">
+        <input type="text" class="form-control"
+         [(ngModel)]="model.userName" name="userName">
+    </div>
+    <div class="col-12">
+        <button type="button" class="btn btn-primary"
+         (click)="handleSubmit()">Update Image</button>
+    </div>
+</form>

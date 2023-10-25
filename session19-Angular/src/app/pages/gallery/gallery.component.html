@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-12 text-center" *ngIf="loadingFlag ; else showData ">
+        <img src="assets/loading.gif" alt="">
+    </div>
+   <ng-template #showData>
+    <div class="col-12 col-md-4" *ngFor="let item of gallery | paginate: { id: 'galleryPagination',
+    itemsPerPage: pageSize,
+    currentPage: p,
+    totalItems: total }">
+        <div class="card">
+            <img src="{{item.url}}" class="card-img-top" alt="">
+            <div class="card-body">
+                <h4>{{item.title}}</h4>
+            </div>
+        </div>
+    </div>
+    <pagination-controls  id="galleryPagination"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event)"
+                      [maxSize]="9"
+                      [directionLinks]="true"
+                      [autoHide]="true"
+                      [responsive]="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                    >
+</pagination-controls>
+   </ng-template>
+</div>
