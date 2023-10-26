@@ -46,11 +46,9 @@ export class ChildComponent {
 
     ngAfterViewInit(){
       console.log('ng after view init');
-      
     }
     ngAfterViewChecked(){
-      console.log('ng after view checked');
-      
+      console.log('ng after view checked'); 
     }
     ngOnDestroy(){
       console.log('ng on destroy')
